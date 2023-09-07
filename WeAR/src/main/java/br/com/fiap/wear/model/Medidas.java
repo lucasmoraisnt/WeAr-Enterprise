@@ -13,18 +13,31 @@ public class Medidas {
     @Id
     @GeneratedValue(strategy =  GenerationType.SEQUENCE)
 
-    @Column(name = "id_medidas", nullable = false)
-    private Long id;
+    @Column(name = "medidasId", nullable = false)
+    private Long medidasId;
 
-    @Column(name = "nr_altura", nullable = false)
-    private int altura;
+    @Column(name = "altura", nullable = false)
+    private double altura;
 
-    @Column(name = "nr_busto", nullable = false)
+    @Column(name = "busto", nullable = false)
     private double busto;
 
-    @Column(name = "nr_cintura", nullable = false)
+    @Column(name = "cintura", nullable = false)
     private double cintura;
 
-    @Column(name = "nr_quadril", nullable = false)
+    @Column(name = "quadril", nullable = false)
     private double quadril;
+
+    @Column(name = "ombro", nullable = false)
+    private double ombro;
+
+    @Column(name = "comprimentoBraco", nullable = false)
+    private double comprimentoBraco;
+
+    @Column(name = "comprimentoPerna", nullable = false)
+    private double comprimentoPerna;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuarioId")
+    private Usuario usuario;
 }

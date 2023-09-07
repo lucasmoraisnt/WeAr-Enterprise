@@ -17,8 +17,8 @@ public class MedidasRepository {
         return medidas;
     }
 
-    public Medidas findMedidasById(int id){
-        Medidas medidas = entityManager.find(Medidas.class, id);
+    public Medidas findMedidasById(Long medidasId){
+        Medidas medidas = entityManager.find(Medidas.class, medidasId);
         if(medidas == null){
             return null;
         }
@@ -58,7 +58,7 @@ public class MedidasRepository {
         }
     }
 
-    public void deleteMedidas(int id){
+    public void deleteMedidas(Long medidasId){
         Medidas medidas = entityManager.find(Medidas.class, id);
         entityManager.getTransaction().begin();
         try{

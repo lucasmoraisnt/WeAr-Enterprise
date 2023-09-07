@@ -1,34 +1,34 @@
 package br.com.fiap.wear.repositories;
 
-import br.com.fiap.wear.model.Pessoa;
+import br.com.fiap.wear.model.PecasVestuario;
 import jakarta.persistence.EntityManager;
 
-public class PessoaRepository {
+public class PecasVestuarioRepository {
     private EntityManager entityManager;
 
-    public PessoaRepository(EntityManager entityManager){
+    public PecasVestuarioRepository(EntityManager entityManager){
         this.entityManager = entityManager;
     }
 
-    public Iterable<Pessoa> findAllPessoa(){
-        String jpql = "SELECT a FROM Pessoa a";
-        var query = entityManager.createQuery(jpql, Pessoa.class);
+    public Iterable<PecasVestuario> findAllPecasVestuario(){
+        String jpql = "SELECT a FROM PecasVestuario a";
+        var query = entityManager.createQuery(jpql, PecasVestuario.class);
         var p = query.getResultList();
         return p;
     }
 
-    public Pessoa findPessoaById(int id){
-        Pessoa p = entityManager.find(Pessoa.class, id);
+    public PecasVestuario findPecaVestuarioById(Long pecasVestuarioId){
+        PecasVestuario p = entityManager.find(PecasVestuario.class, pecasVestuarioId);
         if(p == null){
             return null;
         }
         return p;
     }
 
-    public Iterable<Pessoa> findPessoaByType(String pessoa_type){
-        String jpql = "SELECT a FROM Pessoa a WHERE pessoa_type = :pessoa_type";
-        var query = entityManager.createQuery(jpql, Pessoa.class);
-        query.setParameter("pessoa_type", pessoa_type);
+    public Iterable<PecasVestuario> findPecasVestuarioByMarca(String marca){
+        String jpql = "SELECT a FROM PecasVestuario a WHERE marca = :marca";
+        var query = entityManager.createQuery(jpql, PecasVestuario.class);
+        query.setParameter("marca", marca);
         var p = query.getResultList();
         if(p == null){
             return null;
@@ -36,7 +36,7 @@ public class PessoaRepository {
         return p;
     }
 
-    public void insertPessoa(Pessoa p){
+    public void insertPecasVestuario(PecasVestuario p){
         try{
             entityManager.getTransaction().begin();
             entityManager.persist(p);
@@ -47,7 +47,7 @@ public class PessoaRepository {
         }
     }
 
-    public void updatePessoa(Pessoa p){
+    public void updatePecasVestuario(PecasVestuario p){
         try{
             entityManager.getTransaction().begin();
             entityManager.merge(p);
@@ -58,8 +58,8 @@ public class PessoaRepository {
         }
     }
 
-    public void deletePessoa(int id){
-        Pessoa p = entityManager.find(Pessoa.class, id);
+    public void deletePecasVestuario(Long pecasVestuarioId){
+        PecasVestuario p = entityManager.find(PecasVestuario.class, pecasVestuarioId);
         entityManager.getTransaction().begin();
         try{
             if(p != null){
