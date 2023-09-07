@@ -36,6 +36,9 @@ public class Medidas {
 
     @Column(name = "comprimentoPerna", nullable = false)
     private double comprimentoPerna;
+    
+    @Column(name = "dataCadastro", nullable = false)
+    private Date dataCadastro;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuarioId")

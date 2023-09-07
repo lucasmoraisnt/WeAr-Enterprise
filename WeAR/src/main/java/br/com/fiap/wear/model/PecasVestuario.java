@@ -39,4 +39,7 @@ public class PecasVestuario {
 
     @Column(name = "preco", nullable = false)
     private double preco;
+
+    @Column(name = "dataCadastro", nullable = false)
+    private Date dataCadastro;
 }

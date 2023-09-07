@@ -22,6 +22,9 @@ public class Avaliacoes {
     @Column(name = "comentario")
     private String comentario;
 
+    @Column(name = "dataCadastro", nullable = false)
+    private Date dataCadastro;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuarioId")
     private Usuario usuario;

@@ -39,4 +39,7 @@ public class Usuario {
     
     @Column(name = "genero")
     private String genero;
+        
+    @Column(name = "dataCadastro", nullable = false)
+    private Date dataCadastro;
 }
